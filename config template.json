@@ -1,0 +1,9 @@
+{
+    "dataDirectory": "",
+    "dbConfig": {
+        "host": "",
+        "port": 28015,
+        "authKey": "",
+        "db": "emma"
+      }
+}
