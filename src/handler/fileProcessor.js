@@ -15,20 +15,22 @@ let processRawTweetData = function(rethink, connection, callback){
     fs.readdir(config.dataDirectory, (err, files) => {
         if (err) return callback(`Unable to scan directory: ${err}`);
 
+        const processedFiles = [];
         files.forEach((file) => {
             let rawdata = fs.readFileSync(config.dataDirectory + file, "utf8");
             let tweetRaw = JSON.parse(rawdata);
 
-            const newData = {
+            const processedTweet = {
                 text: tweetRaw.text.toLowerCase(),
                 date: tweetRaw.datetime
             };
-
-            rethink.table("positive")
-                .insert(newData)
-                .run(connection)
-                .then(() => log.info("insetrted"));
+            processedFiles.push(processedTweet);
         });
+
+        rethink.table("positive")
+            .insert(processedFiles)
+            .run(connection)
+            .then(() => log.info("Insetrted Files!"));
         return callback(null);
     });
 };
