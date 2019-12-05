@@ -11,7 +11,7 @@ rethink.connect({
     port: config.dbConfig.port,
     db: config.dbConfig.db
 }).then(connection => {
-    log.done("Connected");
+    log.done("Connected to RethinkDB!");
     fileProcessor.processRawTweetData(rethink, connection, (err) => {
         if (err) log.error(err);
     });
