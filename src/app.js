@@ -20,7 +20,7 @@ rethink.connect({
     db: config.dbConfig.db
 }).then(connection => {
     log.done("Connected to RethinkDB!");
-    fileProcessor.processRawTweetData(rethink, connection, (err) => {
+    fileProcessor.processEmotionData(rethink, connection, (err) => {
         if (!err) return;
         log.error(err);
         process.exit(1);
