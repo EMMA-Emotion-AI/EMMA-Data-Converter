@@ -1,9 +1,13 @@
 {
-    "dataDirectory": "",
+    "dataDirectory": "./data",
+    "positiveDirectory": "positive/",
+    "negativeDirectory": "negative/",
     "dbConfig": {
-        "host": "",
+        "host": "0.0.0.0",
         "port": 28015,
         "authKey": "",
-        "db": "emma"
+        "db": "emma",
+        "positiveTable": "positive",
+        "negativeTable": "negative"
       }
 }
