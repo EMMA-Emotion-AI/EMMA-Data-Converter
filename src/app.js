@@ -17,7 +17,9 @@ let fileProcessor = require("./handler/fileProcessor");
 rethink.connect({
     host: config.dbConfig.host,
     port: config.dbConfig.port,
-    db: config.dbConfig.db
+    db: config.dbConfig.db,
+    user: config.dbConfig.user,
+    password: config.dbConfig.password
 }).then(connection => {
     log.done("Connected to RethinkDB!");
     fileProcessor.processEmotionData(rethink, connection, (err) => {
